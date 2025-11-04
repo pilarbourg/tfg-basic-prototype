@@ -53,13 +53,12 @@ embeddings = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
 index = faiss.IndexFlatIP(embeddings.shape[1])
 index.add(embeddings)
 
-print("\n✅ Vector database ready!")
-print("Type a question (or 'exit' to quit).\n")
+print("Ask a question or 'exit' to quit\n")
 
 while True:
     query = input("🔍 Enter your query: ")
     if query.lower() == "exit":
-        print("👋 Goodbye!")
+        print("Ending script")
         break
 
     query_emb = model.encode([query]).astype('float32')
@@ -67,7 +66,7 @@ while True:
 
     D, I = index.search(query_emb, k=5)
 
-    print("\n🔎 Top results:\n")
+    print("\nTop results:\n")
     for score, idx in zip(D[0], I[0]):
         if score > 0.65:
             relevant = "highly relevant"
