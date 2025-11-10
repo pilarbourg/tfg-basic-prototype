@@ -55,26 +55,19 @@ def load_pdf():
 
     def clean_text(s: str) -> str:
         s = s.replace("\xa0", " ")
-        # Remove inline citations like "disease21,22" or "depression19"
         s = re.sub(r'([a-zA-Z])\d+(?:,\d+)*', r'\1', s)
-        # Remove standalone numeric citations like "(19, 20)" or "[21]"
         s = re.sub(r'\[\s*\d+(?:\s*,\s*\d+)*\s*\]', '', s)
         s = re.sub(r'\(\s*\d+(?:\s*,\s*\d+)*\s*\)', '', s)
-        # Remove repeated reference lines or numbering artifacts
         s = re.sub(r'^\s*\d{1,3}\.\s+[A-Z].*$', '', s, flags=re.MULTILINE)
-        # Fix hyphenated line breaks like "physio- logical"
         s = re.sub(r'(\w+)-\s+(\w+)', r'\1\2', s)
-        # Normalize whitespace
         s = re.sub(r'\s+', ' ', s).strip()
         return s
 
     def strip_references(text: str) -> str:
-        # Remove "References" sections
         text = re.split(r'\bReferences\b|\bREFERENCES\b', text)[0]
-        # Remove numbered citations like "1.", "(1)", "[1]" etc.
         text = re.sub(r'\[\s*\d+(?:\s*,\s*\d+)*\s*\]', '', text)
         text = re.sub(r'\(\s*\d+(?:\s*,\s*\d+)*\s*\)', '', text)
-        text = re.sub(r'\b\d+\s*\.\s+[A-Z][a-z]', '', text)  # "1. Smith" pattern
+        text = re.sub(r'\b\d+\s*\.\s+[A-Z][a-z]', '', text)
         return text.strip()
 
     def is_junk(s: str) -> bool:

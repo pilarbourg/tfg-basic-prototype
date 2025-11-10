@@ -56,9 +56,9 @@ index.add(embeddings)
 print("Ask a question or 'exit' to quit\n")
 
 while True:
-    query = input("🔍 Enter your query: ")
+    query = input("Enter query: ")
     if query.lower() == "exit":
-        print("Ending script")
+        print("Exiting")
         break
 
     query_emb = model.encode([query]).astype('float32')
@@ -75,11 +75,11 @@ while True:
         else:
             relevant = "less relevant"
         
-        print(f"📄 Paper: {metadata[idx]['paper']}")
-        print(f"🔢 Chunk ID: {metadata[idx]['chunk_id']}")
-        print(f"🏷️ Relevance: {relevant}")
-        print(f"🔗 Similarity score: {score:.4f}")
-        print(f"🧩 Text: {all_chunks[idx][:700]}...\n{'-'*80}")
+        print(f"Paper: {metadata[idx]['paper']}")
+        print(f"Chunk ID: {metadata[idx]['chunk_id']}")
+        print(f"Relevance: {relevant}")
+        print(f"Similarity score: {score:.4f}")
+        print(f"Text: {all_chunks[idx][:700]}...\n{'-'*80}")
 
 
         
