@@ -80,3 +80,6 @@ while True:
         print(f"🏷️ Relevance: {relevant}")
         print(f"🔗 Similarity score: {score:.4f}")
         print(f"🧩 Text: {all_chunks[idx][:700]}...\n{'-'*80}")
+
+
+        
