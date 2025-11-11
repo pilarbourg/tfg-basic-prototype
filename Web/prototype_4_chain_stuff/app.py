@@ -17,7 +17,7 @@ st.cache_data.clear()
 
 pipe = pipeline(
     "text2text-generation",
-    model="google/flan-t5-small",
+    model="google/flan-t5-base",
     max_new_tokens=200,
     temperature=0.5,
 )
@@ -140,7 +140,9 @@ Use ONLY the context below to answer the question clearly and concisely.
 Respond naturally, add contextual explanations as needed.
 Use correct grammar and punctuation.
 Do not include citation numbers or reference lists in your answer.
-If the answer is not contained in the context, reply with "I don't know".
+If the answer is NOT contained in the context, reply with "I don't know".
+If you cannot find the answer based on the given context, reply with "I don't know".
+Do not answer with something unrelated to the question.
 
 Context:
 {context}

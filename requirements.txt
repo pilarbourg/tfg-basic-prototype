@@ -1,0 +1,25 @@
+# Core libraries
+numpy>=1.24
+scipy>=1.10
+
+# Sentence embeddings
+sentence-transformers>=2.2.2
+
+# Vector search
+faiss-cpu>=1.7.4
+
+# PDF handling
+PyMuPDF>=1.23.1
+
+# Transformers and HuggingFace
+transformers>=4.38
+torch>=2.1.0
+
+# Streamlit for web interface
+streamlit>=1.24.0
+
+# LangChain community version for LLM integration
+langchain-community>=0.2.0
+
+# Optional utilities
+regex>=2023.6
